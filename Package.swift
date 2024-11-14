@@ -5,20 +5,39 @@ import PackageDescription
 
 let package = Package(
     name: "ItunesPodcastManager",
+    platforms: [
+        .iOS(.v17) // Minimum iOS version set to iOS 17
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
+            name: "ItunesPodcastManagerLogger",
+            targets: ["ItunesPodcastManagerLogger"]
+        ),
+        .library(
             name: "ItunesPodcastManager",
-            targets: ["ItunesPodcastManager"]),
+            targets: ["ItunesPodcastManager"]
+        ),
+    ],
+    dependencies: [
+        // External dependencies for the package
+        .package(
+            url: "https://github.com/SwiftyJSON/SwiftyJSON.git",
+            from: "5.0.2"
+        )
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
+        // Define targets for each library or test module
         .target(
-            name: "ItunesPodcastManager"),
-        .testTarget(
-            name: "ItunesPodcastManagerTests",
-            dependencies: ["ItunesPodcastManager"]
+            name: "ItunesPodcastManagerLogger",
+            dependencies: []
         ),
+        .target(
+            name: "ItunesPodcastManager",
+            dependencies: [
+                .product(name: "SwiftyJSON", package: "SwiftyJSON")
+            ]
+        )
     ]
 )
+

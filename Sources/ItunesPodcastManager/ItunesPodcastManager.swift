@@ -561,7 +561,7 @@ public enum Language: String {
 public final class PodcastResult: Identifiable, Codable, Sendable {
     public let totalCount: Int?
     public let podcastList: [Podcast]?
-    init(searchResults: SearchResults, mediaType: Entity? = nil) {
+    public init(searchResults: SearchResults, mediaType: Entity? = nil) {
         self.totalCount = searchResults.resultCount
         self.podcastList = searchResults.results.compactMap { item in
             try? Podcast.normalizeResult(result: item, mediaType: mediaType, totalCount: searchResults.resultCount)

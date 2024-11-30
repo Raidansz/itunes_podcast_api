@@ -11,10 +11,6 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "ItunesPodcastManagerLogger",
-            targets: ["ItunesPodcastManagerLogger"]
-        ),
-        .library(
             name: "ItunesPodcastManager",
             targets: ["ItunesPodcastManager"]
         ),
@@ -28,10 +24,6 @@ let package = Package(
     ],
     targets: [
         // Define targets for each library or test module
-        .target(
-            name: "ItunesPodcastManagerLogger",
-            dependencies: []
-        ),
         .target(
             name: "ItunesPodcastManager",
             dependencies: [

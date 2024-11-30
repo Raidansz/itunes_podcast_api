@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftyJSON
-import ItunesPodcastManagerLogger
 
 /// Searches for podcasts based on various filters.
 ///
@@ -580,7 +579,7 @@ public final class Podcast: Identifiable, Codable, Sendable {
     public let isPodcast: Bool
     public let feedURL: URL?
 
-    init(item: SearchResult, mediaType: Entity?) {
+    public init(item: SearchResult, mediaType: Entity?) {
         self.id = "\(item.id)"
         self.title = item.trackName
         self.image = item.artworkUrl600 ?? item.artworkUrl100 ?? URL(fileURLWithPath: "")
@@ -597,10 +596,10 @@ public final class Podcast: Identifiable, Codable, Sendable {
 
 /// Holds an array of `SearchResult` objects.
 public class SearchResults: Equatable, Identifiable, Codable {
-    var resultCount: Int!
-    var results: [SearchResult] = []
+    public var resultCount: Int!
+    public var results: [SearchResult] = []
 
-    init(resultCount: Int, results: [SearchResult]) {
+    public init(resultCount: Int, results: [SearchResult]) {
         self.resultCount = resultCount
         self.results = results
     }
